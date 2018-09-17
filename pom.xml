@@ -1,27 +1,14 @@
-<!--<build>-->
-    <!--<plugins>-->
-        <!--...-->
-        <!--<plugin>-->
-            <!--<groupId>org.codehaus.mojo</groupId>-->
-            <!--<artifactId>appassembler-maven-plugin</artifactId>-->
-            <!--<version>1.1.1</version>-->
-            <!--<configuration>-->
-                <!--<assembleDirectory>target</assembleDirectory>-->
-                <!--<programs>-->
-                    <!--<program>-->
-                        <!--<mainClass>../src/Main</mainClass>-->
-                        <!--<name>MyTelegramBot</name>-->
-                    <!--</program>-->
-                <!--</programs>-->
-            <!--</configuration>-->
-            <!--<executions>-->
-                <!--<execution>-->
-                    <!--<phase>package</phase>-->
-                    <!--<goals>-->
-                        <!--<goal>assemble</goal>-->
-                    <!--</goals>-->
-                <!--</execution>-->
-            <!--</executions>-->
-        <!--</plugin>-->
-    <!--</plugins>-->
-<!--</build>-->
+<build>
+    <plugins>
+        <plugin>
+            <groupId>com.heroku.sdk</groupId>
+            <artifactId>heroku-maven-plugin</artifactId>
+            <configuration>
+                <appName>$qwertybotqwerty</appName>
+                <processTypes>
+                    <web>web: java -jar out/artifacts/MyTelegramBot_jar/MyTelegramBot.jar</web>
+                </processTypes>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
