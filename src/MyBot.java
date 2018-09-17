@@ -9,6 +9,8 @@ import java.util.HashMap;
 
 public class MyBot extends TelegramLongPollingBot {
 
+    public static final int SECONDS_IN_DAY = 86400;
+
     @Override
     public void onUpdateReceived(Update update) {
 
@@ -39,7 +41,7 @@ public class MyBot extends TelegramLongPollingBot {
                     break;
 
                 case "/getNextDay":
-                    response = "Next day is: " + nextDayMap.get(getToday(update)) + "\n" + SCHEDULE.get(nextDayMap.get(getToday(update)));
+                    response = "Next day is: " + getNextDay(update) + "\n" + SCHEDULE.get(getNextDay(update));
                     break;
 
                 case "/showAll":
@@ -91,6 +93,14 @@ public class MyBot extends TelegramLongPollingBot {
         return new Date((long) update
                 .getMessage()
                 .getDate() * 1000)
+                .toString()
+                .split(" ")[0];
+    }
+
+    private String getNextDay(Update update) {
+        return new Date(update
+                .getMessage()
+                .getDate() * 1000 + SECONDS_IN_DAY)
                 .toString()
                 .split(" ")[0];
     }
@@ -147,17 +157,5 @@ public class MyBot extends TelegramLongPollingBot {
                 "11-40(ч):\n" +
                 "13-30(н): БЖД (пр)\n");
 
-    }
-
-    enum WEEK{Mon, Tue, Wed, Thu, Fri};
-
-    private static final HashMap<WEEK, WEEK> nextDayMap;
-    static {
-        nextDayMap = new HashMap<>();
-        nextDayMap.put(WEEK.Mon, WEEK.Tue);
-        nextDayMap.put(WEEK.Tue, WEEK.Wed);
-        nextDayMap.put(WEEK.Wed, WEEK.Thu);
-        nextDayMap.put(WEEK.Thu, WEEK.Fri);
-        nextDayMap.put(WEEK.Fri, WEEK.Mon);
     }
 }
