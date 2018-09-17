@@ -1,1 +1,1 @@
-worker: java -jar out/artifacts/MyTelegramBot_jar/MyTelegramBot.jar
+web: java -jar out/artifacts/MyTelegramBot_jar/MyTelegramBot.jar
