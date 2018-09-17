@@ -1,4 +1,5 @@
 
+import org.jetbrains.annotations.NotNull;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -9,7 +10,7 @@ import java.util.HashMap;
 
 public class MyBot extends TelegramLongPollingBot {
 
-    public static final int SECONDS_IN_DAY = 86400;
+    private static final int SECONDS_IN_DAY = 86400;
 
     @Override
     public void onUpdateReceived(Update update) {
@@ -89,7 +90,7 @@ public class MyBot extends TelegramLongPollingBot {
         return "650261192:AAGUIa4yuBH8rlpfQ_RAXGlC1e0V1Fnzta4";
     }
 
-    private String getToday(Update update) {
+    private String getToday(@NotNull Update update) {
         return new Date((long) update
                 .getMessage()
                 .getDate() * 1000)
@@ -115,7 +116,7 @@ public class MyBot extends TelegramLongPollingBot {
                 "10-00(н): МатАн (лаб)\n" +
                 "10-00(ч): МатАн (лаб)\n" +
                 "11-40(н): C++ (лек)\n" +
-                "11-40(ч): C++ (лек)\n");
+                "11-40(ч): C++ (лек)");
 
         SCHEDULE.put("Tue", "8-20(н):  ИнЯз (пр)\n" +
                 "8-20(ч):  ИнЯз (пр)\n" +
@@ -124,7 +125,7 @@ public class MyBot extends TelegramLongPollingBot {
                 "11-40(н): Дискретка (лек)\n" +
                 "11-40(ч): Дискретка (лек)\n" +
                 "13-30(н):\n" +
-                "13-30(ч): БЖД (лек)\n");
+                "13-30(ч): БЖД (лек)");
 
         SCHEDULE.put("Wed",
                 "8-20(н):\n" +
