@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="MyTelegramBot:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MyTelegramBot_jar</output-path>
+    <root id="archive" name="MyTelegramBot.jar">
+      <element id="module-output" name="MyTelegramBot" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/telegrambots-abilities-4.1-jar-with-dependencies.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
