@@ -96,7 +96,7 @@ public class MyBot extends TelegramLongPollingBot {
     }
 
     private String getTomorrow(Update update) {
-        String ans = "hmmm";
+        String ans = "hmmmsome";
         switch (getToday(update)) {
             case "Mon":
                 ans = "Tue";
