@@ -39,7 +39,7 @@ public class MyBot extends TelegramLongPollingBot {
                     break;
 
                 case "/getNextDay":
-                    response = "Tomorrow wil be: " + getTomorrow(update) + "\n" + SCHEDULE.get(getTomorrow(update));
+                    response = "Next day is: " + nextDayMap.get(getToday(update)) + "\n" + SCHEDULE.get(nextDayMap.get(getToday(update)));
                     break;
 
                 case "/showAll":
@@ -95,33 +95,6 @@ public class MyBot extends TelegramLongPollingBot {
                 .split(" ")[0];
     }
 
-    private String getTomorrow(Update update) {
-        String ans = "hmmmsomejj";
-        switch (getToday(update)) {
-            case "Mon":
-                ans = "Tue";
-                break;
-
-            case "Tue":
-                ans = "Wed";
-                break;
-
-            case "Wed":
-                ans = "Thu";
-                break;
-
-            case "Thu":
-                ans = "Fri";
-                break;
-
-            case "Fri":
-                ans = "Mon";
-                break;
-
-        }
-        return ans;
-    }
-
     private static final HashMap<String, String> SCHEDULE;
 
     static {
@@ -174,5 +147,17 @@ public class MyBot extends TelegramLongPollingBot {
                 "11-40(ч):\n" +
                 "13-30(н): БЖД (пр)\n");
 
+    }
+
+    enum WEEK{Mon, Tue, Wed, Thu, Fri};
+
+    private static final HashMap<WEEK, WEEK> nextDayMap;
+    static {
+        nextDayMap = new HashMap<>();
+        nextDayMap.put(WEEK.Mon, WEEK.Tue);
+        nextDayMap.put(WEEK.Tue, WEEK.Wed);
+        nextDayMap.put(WEEK.Wed, WEEK.Thu);
+        nextDayMap.put(WEEK.Thu, WEEK.Fri);
+        nextDayMap.put(WEEK.Fri, WEEK.Mon);
     }
 }
