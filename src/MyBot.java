@@ -29,7 +29,7 @@ public class MyBot extends TelegramLongPollingBot {
                     response = "Available commands: \n" +
                             "   /help\n" +
                             "   /getToday\n" +
-                            "   /getTomorrow\n" +
+                            "   /getNextDay\n" +
                             "   /showAll\n" +
                             "   /showDate";
                     break;
@@ -38,7 +38,7 @@ public class MyBot extends TelegramLongPollingBot {
                     response = "Today is: " + getToday(update) + "\n" + SCHEDULE.get(getToday(update));
                     break;
 
-                case "/getTomorrow":
+                case "/getNextDay":
                     response = "Tomorrow wil be: " + getTomorrow(update) + "\n" + SCHEDULE.get(getTomorrow(update));
                     break;
 
